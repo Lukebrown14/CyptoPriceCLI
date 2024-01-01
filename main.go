@@ -67,6 +67,17 @@ func main() {
 	// API Request
 	name, currency, price := apiGetRequest(cyptoInput, currencyInput)
 
+	switch currency {
+	case "GBP":
+		currency = "£"
+	case "USD":
+		currency = "$"
+	default:
+		fmt.Println("Only GBP or USD Currency Allowed")
+		return
+	}
+
+
 	// Outputting results to CLI 
-	fmt.Printf("%s: %s %.0f\n", name, currency, price)
+	fmt.Printf("%s%.0f %s \n", currency, price, name)
 }
